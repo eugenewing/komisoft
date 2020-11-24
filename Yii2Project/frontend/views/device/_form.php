@@ -18,7 +18,7 @@ use app\models\Store;
     <?= $form->field($model, 'serial_number')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'store_id')->widget(Select2::classname(), [
-        'data' => ArrayHelper::map(Store::find()->asArray()->all(), 'id', 'id'),
+        'data' => ArrayHelper::map(Store::find()->asArray()->all(), 'id', 'name'),
         'value' => $model->store,
         'theme' => 'bootstrap',
         'options' => ['placeholder' => 'Выберите склад'],
