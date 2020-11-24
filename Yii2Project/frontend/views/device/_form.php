@@ -22,10 +22,8 @@ use app\models\Store;
         'value' => $model->store,
         'theme' => 'bootstrap',
         'options' => ['placeholder' => 'Выберите склад'],
-        'pluginOptions' => [
-            'allowClear' => true
-        ],
-    ]); ?>
+        'pluginOptions' => ['allowClear' => true],
+    ])->label('Склад'); ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
