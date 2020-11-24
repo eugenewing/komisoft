@@ -33,7 +33,8 @@ $this->params['breadcrumbs'][] = $this->title;
             //'store_id',
             [
                 'attribute' => 'store_id',
-                //'value' => function($model) {return empty($model->store) ? null : $model->store;},
+                'label' => 'Склад',
+                'value' => 'store.name',
                 'filter' => ArrayHelper::map(Store::find()->asArray()->all(), 'id', 'name'),
                 'filterType' => GridView::FILTER_SELECT2,
                 'filterWidgetOptions' => [
