@@ -2,7 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
-use kartik\select2\Select2; 
+use kartik\select2\Select2;
 use yii\helpers\ArrayHelper;
 use app\models\Store;
 
@@ -17,10 +17,8 @@ use app\models\Store;
 
     <?= $form->field($model, 'serial_number')->textInput(['maxlength' => true]) ?>
 
-    <!--<?= $form->field($model, 'store')->textInput(['maxlength' => true]) ?>-->
-
-    <?= $form->field($model, 'store')->widget(Select2::classname(), [
-        'data' => ArrayHelper::map(Store::find()->asArray()->all(), 'name', 'name'),
+    <?= $form->field($model, 'store_id')->widget(Select2::classname(), [
+        'data' => ArrayHelper::map(Store::find()->asArray()->all(), 'id', 'id'),
         'value' => $model->store,
         'theme' => 'bootstrap',
         'options' => ['placeholder' => 'Выберите склад'],
@@ -30,7 +28,7 @@ use app\models\Store;
     ]); ?>
 
     <div class="form-group">
-        <?= Html::submitButton('Сохранить', ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

@@ -15,9 +15,11 @@ use yii\widgets\ActiveForm;
         'method' => 'get',
     ]); ?>
 
+    <?= $form->field($model, 'id') ?>
+
     <?= $form->field($model, 'serial_number') ?>
 
-    <?= $form->field($model, 'store') ?>
+    <?= $form->field($model, 'store_id') ?>
 
     <?= $form->field($model, 'create_date') ?>
 

@@ -3,14 +3,20 @@
 namespace app\models;
 
 use Yii;
+use yii\db\ActiveRecord;
+use yii\behaviors\TimestampBehavior;
+use yii\db\Expression;
 
 /**
  * This is the model class for table "store".
  *
- * @property string $name
- * @property string $create_date
+ * @property int $id
+ * @property string $name Название
+ * @property string $create_date Дата создания
+ *
+ * @property Device[] $devices
  */
-class Store extends \yii\db\ActiveRecord
+class Store extends ActiveRecord
 {
     /**
      * {@inheritdoc}
@@ -20,18 +26,16 @@ class Store extends \yii\db\ActiveRecord
         return 'store';
     }
 
-    /*public function behaviors()
+    public function behaviors()
     {
       return [
         [
-          'class' => TimestampBehavior::className(),
-          'attributes' => [
-            ActiveRecord::EVENT_BEFORE_INSERT => ['create_date'],
-          ],
-           'value' => new Expression('NOW()'),
+            'class' => TimestampBehavior::className(),
+            'attributes' => [ActiveRecord::EVENT_BEFORE_INSERT => ['create_date'],],
+            'value' => new Expression('NOW()'),
         ],
       ];
-    }*/
+    }
 
     /**
      * {@inheritdoc}
@@ -41,8 +45,7 @@ class Store extends \yii\db\ActiveRecord
         return [
             [['name'], 'required'],
             [['create_date'], 'safe'],
-            [['name'], 'string', 'max' => 255],
-            [['name'], 'unique'],
+            [['name'], 'string', 'max' => 100],
         ];
     }
 
@@ -52,8 +55,19 @@ class Store extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
+            'id' => 'ID',
             'name' => 'Название',
             'create_date' => 'Дата создания',
         ];
+    }
+
+    /**
+     * Gets query for [[Devices]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getDevices()
+    {
+        return $this->hasMany(Device::className(), ['store_id' => 'id']);
     }
 }

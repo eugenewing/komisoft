@@ -1,4 +1,5 @@
 function showDevicesModal (url, storeName) {
+    console.log(url);
     id = $.ajax({
         url: url,
         data: {id: storeName},
@@ -12,6 +13,7 @@ function showDevicesModal (url, storeName) {
 }
 
 function openNewPage (e, event) {
+    console.log('test');
     event.preventDefault();
     $('#modal').modal('hide');
     window.open(e.getAttribute('href'));

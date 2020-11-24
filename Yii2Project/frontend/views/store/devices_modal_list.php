@@ -4,6 +4,7 @@ use yii\helpers\Url;
 use yii\widgets\Pjax;
 use kartik\grid\GridView;
 ?>
+
 <div class="">
     <?php Pjax::begin(); ?>
     <?= GridView::widget([

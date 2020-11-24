@@ -17,7 +17,8 @@ class DeviceSearch extends Device
     public function rules()
     {
         return [
-            [['serial_number', 'store', 'create_date'], 'safe'],
+            [['id', 'store_id'], 'integer'],
+            [['serial_number', 'create_date'], 'safe'],
         ];
     }
 
@@ -57,11 +58,12 @@ class DeviceSearch extends Device
 
         // grid filtering conditions
         $query->andFilterWhere([
+            'id' => $this->id,
+            'store_id' => $this->store_id,
             'create_date' => $this->create_date,
         ]);
 
-        $query->andFilterWhere(['like', 'serial_number', $this->serial_number])
-            ->andFilterWhere(['like', 'store', $this->store]);
+        $query->andFilterWhere(['like', 'serial_number', $this->serial_number]);
 
         return $dataProvider;
     }

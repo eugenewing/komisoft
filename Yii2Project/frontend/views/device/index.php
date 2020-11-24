@@ -1,7 +1,6 @@
 <?php
 
 use yii\helpers\Html;
-//use yii\grid\GridView;
 use kartik\grid\GridView;
 use yii\helpers\ArrayHelper;
 use app\models\Store;
@@ -10,7 +9,7 @@ use app\models\Store;
 /* @var $searchModel app\models\DeviceSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Устройства';
+$this->title = 'Devices';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="device-index">
@@ -18,7 +17,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Создать устройство', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Create Device', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
@@ -29,20 +28,20 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
+            'id',
             'serial_number',
+            //'store_id',
             [
-                'attribute' => 'store',
-                'value' => function($model) {
-                  return empty($model->store) ? null : $model->store;
-                },
-                'filter' => ArrayHelper::map(Store::find()->asArray()->all(), 'name', 'name'),
+                'attribute' => 'store_id',
+                //'value' => function($model) {return empty($model->store) ? null : $model->store;},
+                'filter' => ArrayHelper::map(Store::find()->asArray()->all(), 'id', 'id'),
                 'filterType' => GridView::FILTER_SELECT2,
                 'filterWidgetOptions' => [
                   'options' => ['prompt' => ''],
                   'pluginOptions' => ['allowClear' => true],
                   'theme' => 'bootstrap',
                 ],
-              ],
+            ],
             'create_date',
 
             ['class' => 'yii\grid\ActionColumn'],

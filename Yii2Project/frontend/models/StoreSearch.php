@@ -17,6 +17,7 @@ class StoreSearch extends Store
     public function rules()
     {
         return [
+            [['id'], 'integer'],
             [['name', 'create_date'], 'safe'],
         ];
     }
@@ -57,6 +58,7 @@ class StoreSearch extends Store
 
         // grid filtering conditions
         $query->andFilterWhere([
+            'id' => $this->id,
             'create_date' => $this->create_date,
         ]);
 

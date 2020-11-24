@@ -5,7 +5,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Device */
 
-$this->title = 'Создать устройство';
+$this->title = 'Create Device';
 $this->params['breadcrumbs'][] = ['label' => 'Devices', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
