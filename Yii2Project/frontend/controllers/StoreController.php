@@ -33,7 +33,7 @@ class StoreController extends Controller
     public function actionModal($id) {
         $searchModel = new DeviceSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-        $dataProvider->query->andWhere(['id' => $id]);
+        $dataProvider->query->andWhere(['store_id' => $id]);
       
         return $this->renderAjax('devices_modal_list', [
           'searchModel' => $searchModel,
